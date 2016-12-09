@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <title><%= title %></title>
+    <%- include('partials/head') -%>
+  </head>
+  <body>
+    <script src='//bizweb.dktcdn.net/100/052/640/themes/134620/assets/owl.carousel.js?1472194204996' type='text/javascript'></script>
+    <script src='//bizweb.dktcdn.net/100/052/640/themes/134620/assets/jquery.magnific-popup.min.js?1472194204996' type='text/javascript'></script>
+    <script src='//bizweb.dktcdn.net/100/052/640/themes/134620/assets/jquery.elevatezoom.min.js?1472194204996' type='text/javascript'></script>
+    <div id="page-wrapper">
+       <!-- SITE HEADER-->
+       <%- include('partials/header') -%>
+       <!-- /SITE HEADER -->
+       <!-- SITE CONTENT-->
+    <div id="site-content">
+        <div id="main">
+          <!-- MAIN
+==========================================================================================-->
+<%- include('partials/page_title') -%>
+
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-style form-login">
+                    <form accept-charset='UTF-8' action='/check' id='customer_register' method='post'>
+                        <input name='FormType' type='hidden' value='customer_register' />
+                        <input name='utf8' type='hidden' value='true' />
+                        <h3 class="form-heading">Kiểm tra từ khóa</h3>
+                        <div class="row info-input">
+                            <div class="">
+                                <input type="text" required="required" value="" name="url" placeholder="URL của bạn *" required />
+                            </div>
+                        </div>
+                        <div class="row info-input">
+                            <div class="">
+                                <input type="text" required="required" value="" name="key" placeholder="Từ khóa *" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn-cart">Kiểm tra</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =======================================================================================
+          /MAIN -->
+        </div>
+    </div>
+        <!-- /SITE CONTENT -->
+
+        <!-- SITE FOOTER-->
+        <%- include('partials/brand') -%>
+        <%- include('partials/footer') -%>
+        <!-- /SITE FOOTER-->
+    </div>
+        <%- include('partials/script_end') -%>
+  </body>
+</html>

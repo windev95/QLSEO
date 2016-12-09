@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <title><%= title %></title>
+    <%- include('partials/head') -%>
+  </head>
+  <body>
+    <script src='//bizweb.dktcdn.net/100/052/640/themes/134620/assets/owl.carousel.js?1472194204996' type='text/javascript'></script>
+    <script src='//bizweb.dktcdn.net/100/052/640/themes/134620/assets/jquery.magnific-popup.min.js?1472194204996' type='text/javascript'></script>
+    <script src='//bizweb.dktcdn.net/100/052/640/themes/134620/assets/jquery.elevatezoom.min.js?1472194204996' type='text/javascript'></script>
+    <div id="page-wrapper">
+       <!-- SITE HEADER-->
+       <%- include('partials/header') -%>
+       <!-- /SITE HEADER -->
+       <!-- SITE CONTENT-->
+    <div id="site-content">
+        <div id="main">
+          <!-- MAIN
+==========================================================================================-->
+<%- include('partials/page_title') -%>
+
+<!-- Main Content -->
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="login" class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-style form-login">
+                    <form accept-charset='UTF-8' action='/login' id='' method='post'>
+                        <h3 class="form-heading">Đăng nhập</h3>
+                        <div class="row info-input">
+                            <div class="">
+                                <input type="email" required="required" value="" placeholder="Email" id="email" name="email" required />
+                            </div>
+                        </div>
+                        <div class="row info-input">
+                            <div class="">
+                                <input type="password" required="required" value="" placeholder="Mật khẩu" id="pass" name="password" required />
+                            </div>
+                        </div>
+                        <div class="row info-input">
+                            <div class="">
+                                <ul>
+                                    <li>
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="c3" name="a">
+                                            <label for="c3"><span></span>Ghi nhớ tài khoản</label>
+                                        </div>
+                                    </li>
+                                    
+                                    <li><a class="hover_underline" href="/register">Đăng ký tài khoản mới</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn-cart btn btn-primary pull-left" id = "log-form-btn">Đăng nhập</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-style form-login" id="recover-password" style="display: none">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =======================================================================================
+          /MAIN -->
+        </div>
+    </div>
+        <!-- /SITE CONTENT -->
+
+        <!-- SITE FOOTER-->
+        <%- include('partials/brand') -%>
+        <%- include('partials/footer') -%>
+        <!-- /SITE FOOTER-->
+    </div>
+        <%- include('partials/script_end') -%>
+  </body>
+</html>

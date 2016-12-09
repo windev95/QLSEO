@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <title><%= title %></title>
+    <%- include('partials/head') -%>
+  </head>
+  <body>
+    <script src='//bizweb.dktcdn.net/100/052/640/themes/134620/assets/owl.carousel.js?1472194204996' type='text/javascript'></script>
+    <script src='//bizweb.dktcdn.net/100/052/640/themes/134620/assets/jquery.magnific-popup.min.js?1472194204996' type='text/javascript'></script>
+    <script src='//bizweb.dktcdn.net/100/052/640/themes/134620/assets/jquery.elevatezoom.min.js?1472194204996' type='text/javascript'></script>
+    <div id="page-wrapper">
+       <!-- SITE HEADER-->
+       <%- include('partials/header') -%>
+       <!-- /SITE HEADER -->
+
+       <!-- SITE CONTENT-->
+    <div id="site-content">
+        <div id="main">
+          <!-- MAIN
+==========================================================================================-->
+<%- include('partials/page_title') -%>
+
+ <!-- Main Content -->
+ <div class="main-content">
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                 <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-style form-login">
+                     <form accept-charset='UTF-8' action='/register' method='post'>
+                         <h3 class="form-heading">Đăng ký</h3>
+                         <h2><%= error %> </h2>
+                         <div class="row info-input">
+                             <div class="">
+                                 <input type="text" required="required" value="" id="name" name="namee" placeholder="Họ tên *" required />
+                             </div>
+                         </div>
+                         <div class="row info-input">
+                             <div class="">
+                                 <input type="email" required="required" value="" id="email" name="email" placeholder="Email *" required />
+                             </div>
+                         </div>
+                         <div class="row info-input">
+                             <div class="">
+                                 <input type="password" required="required" value="" id="pass" name="password" placeholder="Mật khẩu" required />
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="">
+                                 <ul>
+                                     <li>
+                                         <div class="checkbox">
+                                             <input type="checkbox" id="c2" name="a">
+                                             <label for="c2"><span></span>Đăng kí nhận tin tức qua email </label>
+                                         </div>
+                                     </li>
+                                     <li><a class="hover_underline" href="/login">Đăng nhập</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <button class="btn-cart" type="submit" id="reg-form-btn">Đăng ký</button>
+                         </div>
+                     </form>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+<!-- =======================================================================================
+          /MAIN -->
+        </div>
+    </div>
+        <!-- /SITE CONTENT -->
+
+        <!-- SITE FOOTER-->
+        <%- include('partials/brand') -%>
+        <%- include('partials/footer') -%>
+        <!-- /SITE FOOTER-->
+    </div>
+        <%- include('partials/script_end') -%>
+  </body>
+</html>
+<script>
+    $(document).ready(function() {
+        $("#reg-form-btn").click(function() {
+            var namee = $("#namee").val();
+            var email = $("#email").val();
+            var password = $("#password").val();
+            $.post("/register", {
+                namee: namee,
+                email: email,
+                password: password,
+            });
+        });
+    });
+</script>
