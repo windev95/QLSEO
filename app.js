@@ -3,7 +3,6 @@ var path = require('path');
 var pool =  require('pg');
 var flash = require('express-flash');
 var favicon = require('serve-favicon');
-// var bcrypt = require('../bcrypt');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
