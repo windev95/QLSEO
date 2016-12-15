@@ -15,10 +15,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-var sess;
 app.get('/', function(req, res, next) {
-  sess = req.session;
-  var loi_string = '{"err" : ""}';
+  var loi_string = {"err" : " "};
   res.render('login', { 'title': 'Đăng nhập'});
 });
 
@@ -42,7 +40,6 @@ passport.use(new LocalStrategy(
 ));
 
 app.post('/', form.single() ,urlencodedParser, function (req, res, done) {
-  sess = req.session;
   if (!req.body.email) return res.sendStatus(400)
   if (!req.body.password) return res.sendStatus(400)
   var email = req.body.email;
@@ -50,13 +47,13 @@ app.post('/', form.single() ,urlencodedParser, function (req, res, done) {
     Users.findOne({ where: { email : email } }).then(function (Users) {
       if (!Users) {
         console.log("Sai email");
-        var loi_string = '{"err" : "Sai email"}';
+        var loi_string = {"err" : "Sai email"};
         return res.redirect('/login');
         
       }
       if (Users.password !== password) {
         console.log("Sai Pass");
-       var loi_string = '{"err" : "Sai Pass"}';
+       var loi_string = {"err" : "Sai Pass"};
         return res.redirect('/login');   
       }
       return res.redirect('/check');
