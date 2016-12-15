@@ -8,6 +8,7 @@ var ejs = require('ejs');
 var flash = require('connect-flash');
 var multer = require('multer');
 var form = multer();
+var assert = require('assert');
 var LocalStrategy = require('passport-local').Strategy;
 var app = express();
 app.use(passport.initialize());
@@ -17,7 +18,8 @@ app.use(flash());
 var sess;
 app.get('/', function(req, res, next) {
   sess = req.session;
-  res.render('login', { 'title': 'Đăng nhập' });
+  var loi_string = '{"err" : ""}';
+  res.render('login', { 'title': 'Đăng nhập'});
 });
 
 passport.use(new LocalStrategy(
@@ -47,10 +49,15 @@ app.post('/', form.single() ,urlencodedParser, function (req, res, done) {
   var password = req.body.password;
     Users.findOne({ where: { email : email } }).then(function (Users) {
       if (!Users) {
+        console.log("Sai email");
+        var loi_string = '{"err" : "Sai email"}';
         return res.redirect('/login');
+        
       }
       if (Users.password !== password) {
-        return res.redirect('/login');        
+        console.log("Sai Pass");
+       var loi_string = '{"err" : "Sai Pass"}';
+        return res.redirect('/login');   
       }
       return res.redirect('/check');
     });
