@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var Users = require('../models/users').Users;
 var passport = require('passport');
+var ejs = require('ejs');
 var flash = require('connect-flash');
 var multer = require('multer');
 var form = multer();
@@ -13,8 +14,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-
+var sess;
 app.get('/', function(req, res, next) {
+  sess = req.session;
   res.render('login', { 'title': 'Đăng nhập' });
 });
 
@@ -38,6 +40,7 @@ passport.use(new LocalStrategy(
 ));
 
 app.post('/', form.single() ,urlencodedParser, function (req, res, done) {
+  sess = req.session;
   if (!req.body.email) return res.sendStatus(400)
   if (!req.body.password) return res.sendStatus(400)
   var email = req.body.email;
@@ -47,7 +50,7 @@ app.post('/', form.single() ,urlencodedParser, function (req, res, done) {
         return res.redirect('/login');
       }
       if (Users.password !== password) {
-        return res.redirect('/login');
+        return res.redirect('/login');        
       }
       return res.redirect('/check');
     });

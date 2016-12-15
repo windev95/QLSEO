@@ -22,7 +22,6 @@ app.post('/', form.single() ,urlencodedParser, function (req, res) {
   var password = req.body.password;
     Users.findOne({ where: { email : email } }).then(function (Users) {
       if (Users) {
-        error = "Email đã tồn tại";
         return res.redirect('/register');
       }
     });
