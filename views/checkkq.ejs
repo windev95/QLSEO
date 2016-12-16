@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <title>Đăng nhập </title>
+    <title>Kết quả thứ hạng</title>
     <%- include('partials/head') -%>
   </head>
   <body>
@@ -18,88 +18,50 @@
           <!-- MAIN
 ==========================================================================================-->
 <section class="page_title">
-    <h1 class="text-center">Đăng nhập tài khoản</h1>
+   <h1 class="text-center">Kết quả thứ hạng</h1>
 </section>
 <style>
-    section.page_title {
-        padding-top: 80px;
-        padding-bottom: 80px;
-        background: url("//bizweb.dktcdn.net/100/052/640/themes/134620/assets/bc_cart.jpg?1472194204996");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-    }
+   section.page_title {
+       padding-top: 80px;
+       padding-bottom: 80px;
+       background: url("//bizweb.dktcdn.net/100/052/640/themes/134620/assets/bc_cart.jpg?1472194204996");
+       background-repeat: no-repeat;
+       background-size: cover;
+       background-position: center;
+       position: relative;
+   }
 </style>
 <div class="header-breadcrumb">
-    <div class="container">
-        <div class="row ">
-            <div class="col-xs-12">
-                <ol class="breadcrumb">
-                    <li><a href="/" title="Trang chủ">Trang chủ </a> </li>
-                    <li class="active breadcrumb-title">Đăng nhập tài khoản</li>
-                </ol>
-            </div>
-        </div>
-    </div>
+   <div class="container">
+       <div class="row ">
+           <div class="col-xs-12">
+               <ol class="breadcrumb">
+                   <li><a href="/" title="Trang chủ">Trang chủ </a> </li>
+                   <li class="active breadcrumb-title">Kết quả thứ hạng</li>
+               </ol>
+           </div>
+       </div>
+   </div>
 </div>
-<!-- Main Content -->
-<div class="main-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="login" class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-style form-login">
-                    <form accept-charset='UTF-8' action='/login' id='' method='post'>
-                        <h3 class="form-heading">Đăng nhập</h3>
-                        <div class="row info-input">
-                            <div class="">
-                                <input type="email" required="required" value="" placeholder="Email" id="email" name="email" required />
-                            </div>
-                        </div>
-                        <div class="row info-input">
-                            <div class="">
-                                <input type="password" required="required" value="" placeholder="Mật khẩu" id="pass" name="password" required />
-                            </div>
-                        </div>
-                        <div class="row info-input">
-                            <div class="">
-                                <ul>
-                                    <li>
-                                        <div class="checkbox">
-                                            <input type="checkbox" id="c3" name="a">
-                                            <label for="c3"><span></span>Ghi nhớ tài khoản</label>
-                                        </div>
-                                    </li>
-                                    <li><a href="javascript:void(0);" onclick="showRecoverPasswordForm()" class="a_forget_pass" style="color:#898989;padding-right:15px">Quên mật khẩu?</a></li>
-                                    <li><a class="hover_underline" href="/register">Đăng ký tài khoản mới</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <button type="submit" class="btn-cart btn btn-primary pull-left" id = "log-form-btn">Đăng nhập</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-style form-login" id="recover-password" style="display: none">
-                    // <h3 class="form-heading">Bạn quên mật khẩu?</h3>
-                    // <form accept-charset='UTF-8' action='/recover' id='recover_customer_password' method='post'>
-                    //     <input name='FormType' type='hidden' value='recover_customer_password' />
-                    //     <input name='utf8' type='hidden' value='true' />
-                    //     <p class="text-center">Nhập email của bạn, chúng tôi sẽ gửi email tới cho bạn | <a class="hover_underline" href="javascript:void(0);" onclick="hideRecoverPasswordForm();return false;">Trở lại đăng nhập</a></p>
-                    //     <div class="row info-input">
-                    //         <input type="email" name="email" alt="email" id="email_address" placeholder="Địa chỉ Email *" class="input-text required-entry validate-email" value="" required>
-                    //     </div>
-                    //     <div class="center-btn">
-                    //         <button type="submit" class="btn-cart btn btn-primary pull-left">Gửi</button>
-                    //     </div>
-                    // </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- =======================================================================================
-          /MAIN -->
+<style>
+   .header-breadcrumb {
+       display: none;
+   }
+</style>
+<section class="not_found">
+   <div class="container">
+       <div class="row">
+           <div class="col-md-12">
+               <h2 class="text-center"><%= noti %></h2>
+               <p class="text-center"><%= web %></p>
+               <p class="text-center"><%= key %></p>
+               <p class="text-center"><a href="/check" class="btn btn-primary btn-not-found" title="Kiểm tra từ khóa">Kiểm tra thứ hạng</a></p>
+           </div>
+       </div>
+   </div>
+</section>
+<!-- ======================================================================
+  /MAIN -->
         </div>
     </div>
         <!-- /SITE CONTENT -->

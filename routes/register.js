@@ -11,7 +11,7 @@ var app = express();
 /* GET home page. */
 
 app.get('/', function(req, res, next) {
-  res.render('register', { title: 'Đăng ký', error: "" } );
+  res.render('register', { title: 'Đăng ký', error: " " } );
 });
 
 app.post('/', form.single() ,urlencodedParser, function (req, res) {
@@ -22,7 +22,8 @@ app.post('/', form.single() ,urlencodedParser, function (req, res) {
   var password = req.body.password;
     Users.findOne({ where: { email : email } }).then(function (Users) {
       if (Users) {
-        return res.redirect('/register');
+        res.render('register', { title: 'Đăng ký', error: "Email đã tồn tại!" } );
+        // return res.redirect('/register');
       }
     });
   Users
@@ -31,7 +32,7 @@ app.post('/', form.single() ,urlencodedParser, function (req, res) {
       console.log(Users.get({
         plain: true
       }))
-      console.log(created)
+      // console.log(created)
       return res.redirect('/login');
       })
    });

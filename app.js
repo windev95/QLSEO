@@ -3,19 +3,27 @@ var path = require('path');
 var pool =  require('pg');
 var flash = require('express-flash');
 var favicon = require('serve-favicon');
+// var bcrypt = require('../bcrypt');
+var favicon = require('serve-favicon');
+var cookie = require('cookie');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var register = require('./routes/register');
 var login = require('./routes/login');
 var check = require ('./routes/check');
+var checkkq = require ('./routes/checkkq');
+// var check = require ('./routes/check/view');
 var news = require ('./routes/news');
+// var Users = require('./models').Users;
 
 var app = express();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -23,6 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // authetication setup
+
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(logger('dev'));
@@ -35,13 +44,17 @@ app.use(session({
   saveUninitialized: true,
   resave: true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
 app.use('/register', register);
 app.use('/login', login);
+app.use('/checkkq', checkkq);
 app.use('/check', check);
+// app.use('/check/view', check);
 app.use('/news', news);
 
 // catch 404 and forward to error handler

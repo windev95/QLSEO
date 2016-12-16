@@ -27,8 +27,7 @@
                 <div id="login" class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-style form-login">
                     <form accept-charset='UTF-8' action='/login' id='' method='post'>
                         <h3 class="form-heading">Đăng nhập</h3>
-                        <% var loi_obj = JSON.parse(loi_string) %>
-                        <h2> <%= loi_obj.err %> </h2>
+                        <h4 style="color:red; text-align:center"><%= error %> </h4>
                         <div class="row info-input">
                             <div class="">
                                 <input type="email" required="required" value="" placeholder="Email" id="email" name="email" required />

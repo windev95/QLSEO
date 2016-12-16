@@ -24,7 +24,12 @@ app.post('/', form.single() ,urlencodedParser, function (req, ress){
   var key = req.body.key;
 
 google(key, function (err, res){
-  if (err) console.error(err)
+  if (err) ress.redirect('/check');
+  // console.error(err)
+  if(res.links.length == null)
+  {
+    ress.redirect('/check');
+  }
   var link;
   var href;
   for (var i = 0; i < res.links.length; ++i) {
@@ -35,12 +40,12 @@ google(key, function (err, res){
       if( S(href).contains(url) == true)
       {
         session.rank = i+1;
-        ress.send('Trang Web: \"'+ url+ "\" của bạn với từ khóa \"" + key+"\" có thứ hạn là: " + session.rank);
+        ress.render('checkkq', {noti: "Bạn đạt thứ hạng: " + session.rank, web: "Trang Website: "+ url, key: "Từ khóa: "+ key});
         return;
       }
     }
   }
-   ress.send('Với từ khóa ' + key + ' trang Web của bạn chưa được xếp hạng!');
+   ress.render('checkkq', {noti: "Với từ khóa "+ key +" bạn chưa đạt thứ hạng!.", web: "Có thể do Website của bạn chưa đạt chuẩn SEO hoặc có thứ hạng dưới 100!..", key: " "});
 
   if (nextCounter < 4) {
     nextCounter += 1

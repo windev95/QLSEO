@@ -4,20 +4,18 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var Users = require('../models/users').Users;
 var passport = require('passport');
-var ejs = require('ejs');
 var flash = require('connect-flash');
 var multer = require('multer');
 var form = multer();
-var assert = require('assert');
 var LocalStrategy = require('passport-local').Strategy;
 var app = express();
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+
 app.get('/', function(req, res, next) {
-  var loi_string = {"err" : " "};
-  res.render('login', { 'title': 'Đăng nhập'});
+  res.render('login', { 'title': 'Đăng nhập', error: " " });
 });
 
 passport.use(new LocalStrategy(
@@ -46,16 +44,14 @@ app.post('/', form.single() ,urlencodedParser, function (req, res, done) {
   var password = req.body.password;
     Users.findOne({ where: { email : email } }).then(function (Users) {
       if (!Users) {
-        console.log("Sai email");
-        var loi_string = {"err" : "Sai email"};
-        return res.redirect('/login');
-        
+      console.log("Sai email");
+      res.render('login', { 'title': 'Đăng nhập', error: "Email chưa được đăng ký!.." });
       }
       if (Users.password !== password) {
-        console.log("Sai Pass");
-       var loi_string = {"err" : "Sai Pass"};
-        return res.redirect('/login');   
+      console.log("Sai Pass");
+      res.render('login', { 'title': 'Đăng nhập', error: "Sai mật khẩu!.." });
       }
+      var user = 1;
       return res.redirect('/check');
     });
    });
